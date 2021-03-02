@@ -9,7 +9,7 @@ import { BatchImportComponent } from './batch-import/batch-import.component';
 
 
 @NgModule({
-  declarations: [ProductComponent, ModifyComponent, BatchImportComponent],
+  declarations: [ProductComponent, ModifyComponent, ],
   imports: [
     SkuEditorModule,
     SharedModule,
