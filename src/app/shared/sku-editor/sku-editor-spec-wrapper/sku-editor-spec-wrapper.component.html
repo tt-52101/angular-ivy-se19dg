@@ -1,0 +1,4 @@
+
+<ng-container *ngFor="let control of form?.controls?.spec?.controls">
+  <sku-editor-specification [formControl]="control" (ngModelChange)="handleChange($event)"></sku-editor-specification>
+</ng-container>

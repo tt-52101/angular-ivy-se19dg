@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://www.dev.camelsc.com",
+      "secure": false,
+      "pathRewrite": {},
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

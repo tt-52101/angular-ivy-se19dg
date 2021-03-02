@@ -1,0 +1,12 @@
+<quill-editor
+  #quillEditorRef
+  *ngIf="modules"
+  [ngModel]="html"
+  (ngModelChange)="_change($event)"
+  placeholder=""
+  [modules]="modules"
+  (editorCreated)="_created($event)"
+  [style]="{ min-height: '450px'; max-height: '900px' }"
+></quill-editor>
+
+

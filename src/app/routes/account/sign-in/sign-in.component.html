@@ -1,0 +1,39 @@
+
+
+
+<div class="p-lg">
+
+  <h1 class="title m0">
+    {{'app.sign_in.title' | translate}}
+  </h1>
+  <h4 class="sub-title pb-sm" style="color: #2e2e2e !important; font-weight: 300;">
+    {{'app.sign_in.sub_title' | translate}}
+  </h4>
+
+
+  <nz-tabset nzSize="large" [nzSelectedIndex]="modeIndex" (nzSelectedIndexChange)="handleModeChange($event)">
+    <nz-tab [nzTitle]="'app.sign_in.by_password' | translate">
+      <sf [layout]="'vertical'" [schema]="pwdSchema" #pwdSf button="none" [formData]="default"></sf>
+    </nz-tab>
+    <nz-tab [nzTitle]="'app.sign_in.by_otp' | translate">
+      <sf [layout]="'vertical'" [schema]="otpSchema" #otpSf button="none" [formData]="default"></sf>
+    </nz-tab>
+  </nz-tabset>
+
+  <div class="mb-lg d-flex justify-content-end">
+    <a [routerLink]="['/forget-password']">{{"app.action.forget_password" | translate}}</a>
+  </div>
+
+  <button nz-button nzType="primary" nzBlock nzSize="large" [disabled]="modeIndex===0 ? pwdSf && !pwdSf.valid : otpSf && !otpSf.valid" (click)="onSubmit(modeIndex===0 ? pwdSf.value : otpSf.value)" [nzLoading]="http.loading">
+    {{"app.action.sign_in" | translate}}
+  </button>
+
+
+  <div class="mt-sm  text-center">  
+    <button nz-button nzType="default"   nzSize="large" nzType="link">
+      <a [routerLink]="['/sign-up']">{{"app.action.sign_up" | translate}}</a>
+    </button>
+  </div>
+
+  
+</div>

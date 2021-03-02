@@ -1,0 +1,12 @@
+<form nz-form [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label>
+      <input nz-input formControlName="name" (ngModelChange)="handlechange()">
+    </nz-form-label>
+    <nz-form-control>
+      <nz-row>
+        <sku-editor-spec-item *ngFor="let item of form?.controls?.values?.controls" [formControl]="item"  (ngModelChange)="handlechange()" class="mx-sm mb-sm"></sku-editor-spec-item>
+      </nz-row>
+    </nz-form-control>
+  </nz-form-item>
+</form>

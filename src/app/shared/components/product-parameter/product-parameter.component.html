@@ -1,0 +1,42 @@
+
+<div class="mb-lg">
+
+  <div class="d-flex justify-content-center mb-md">
+    <button nz-button nzType="default" (click)="addroot()">{{ 'app.action.add' | translate}}</button>
+    <button nz-button nzType="default" (click)="addroot()" disabled>{{ 'app.action.reset' | translate}}</button>
+  </div>
+  
+  <ng-container *ngFor="let i of list; let idx = index">
+    <div class="mb-md">
+      <div nz-row *ngIf="!!i.values" nzGutter="12" class="pt-md d-flex  align-items-center">
+        <div nz-col [nzSpan]="4" class="text-right">
+          {{ 'app.product.parameter.group' | translate}}:
+        </div>
+        <div nz-col [nzSpan]="16">
+          <input nz-input [(ngModel)]="i.name" (keyup)="notify()" />
+        </div>
+        <div nz-col [nzSpan]="4">
+          <button nz-button nzType="default" (click)="del(idx)" >{{ 'app.action.delete' | translate}}</button>
+          <button nz-button nzType="default" (click)="add(idx)" >{{ 'app.action.add' | translate}}</button>
+        </div>
+      </div>
+      <ng-container *ngIf="i.values">
+        <div nz-row *ngFor="let i2 of i.values; let idx2 = index" nzGutter="12" class="top">
+          <div nz-col [nzSpan]="4">
+            <input nz-input [(ngModel)]="i2.name" (keyup)="notify()" />
+          </div>
+          <div nz-col [nzSpan]="16">
+            <input nz-input [(ngModel)]="i2.value" (keyup)="notify()" />
+          </div>
+    
+          <div nz-col [nzSpan]="4">
+            <button nz-button nzType="default" (click)="delsub(idx, idx2)" >{{ 'app.action.delete' | translate}}</button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    
+    <nz-divider></nz-divider>
+  </ng-container>
+  
+</div>

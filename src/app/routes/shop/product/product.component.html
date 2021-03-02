@@ -1,0 +1,24 @@
+<page-header-wrapper>
+    <nz-card>
+  
+      <div class="bg-grey-2 p-md mb-lg">
+        <sf [schema]="schema" mode="search" #sf (formSubmit)="handleSearch($event)" (formReset)="handleReset($event)"></sf>
+      </div>
+
+      <div class="mb-md">
+        <button nz-button [nzType]="'primary'" (click)="handleModify()"> <i nz-icon nzType="plus" nzTheme="outline"></i> {{"app.action.add" | translate}} </button>
+  
+        <button nz-button (click)="st.reload()"><i nz-icon nzType="reload" nzTheme="outline"></i> {{"app.action.refresh" | translate}}</button>
+
+        <button nz-button (click)="st.export()"><i nz-icon nzType="export" nzTheme="outline"></i> {{"app.action.export" | translate}}</button>
+      </div>
+  
+  
+      <st [data]="queryApi" [req]="stReq" [res]="stRes" [pi]="pageIndex" [ps]="pageSize" [columns]="columns" #st  [noResult]="'app.public.no_record' | translate"
+      [multiSort]="{key: 'sorts'}"
+        [page]="{showQuickJumper:true,showSize:true, total:true, pageSizes: [10, 200, 400, 600, 800, 1000]}" [multiSort]="{key: 'sorts'}"
+        [scroll]="{x: '1300px'}"></st>
+  
+    </nz-card>
+</page-header-wrapper>
+  

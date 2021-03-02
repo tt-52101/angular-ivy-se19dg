@@ -1,0 +1,28 @@
+
+
+
+<div class="p-lg">
+
+  <h1 class="title m0">
+    {{'app.sign_up.title' | translate}}
+  </h1>
+  <h4 class="sub-title pb-sm" style="color: #2e2e2e !important; font-weight: 300;">
+    {{'app.sign_up.sub_title' | translate}}
+  </h4>
+
+
+
+  <sf [layout]="'vertical'" [schema]="schema" #sf button="none"></sf>
+
+  <button nz-button nzType="primary" nzBlock nzSize="large" [disabled]="sf.valid" (click)="onSubmit(sf.value)" [nzLoading]="http.loading">
+    {{"app.action.sign_up" | translate}}
+  </button>
+
+  <div class="mt-sm">
+    <button nz-button nzType="default"  nzBlock nzSize="large" nzType="link">
+      <a [routerLink]="['/sign-in']">{{"app.sign_up.go_login" | translate}}</a>
+    </button>
+  </div>
+
+  
+</div>

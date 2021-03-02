@@ -1,0 +1,24 @@
+
+<st #st [columns]="allColumns" [data]="data" [responsive]="false" [page]="{show:false}">
+  <ng-template st-row="salesPrice" let-row>
+    <nz-input-group [nzAddOnBefore]="currency">
+      <input (ngModelChange)="change()" [disabled]="!row.disFlag" nz-input [(ngModel)]="row.salesPrice">
+    </nz-input-group>
+  </ng-template>
+  <ng-template st-row="marketPrice" let-row>
+    <nz-input-group [nzAddOnBefore]="currency">
+      <input (ngModelChange)="change()" [disabled]="!row.disFlag"  nz-input [(ngModel)]="row.marketPrice">
+    </nz-input-group>
+  </ng-template>
+  <ng-template st-row="costPrice" let-row>
+    <nz-input-group [nzAddOnBefore]="currency">
+      <input (ngModelChange)="change()" [disabled]="!row.disFlag"  nz-input [(ngModel)]="row.costPrice">
+    </nz-input-group>
+  </ng-template>
+  <ng-template st-row="stock" let-row>
+    <input (ngModelChange)="change()" [disabled]="!row.disFlag"  nz-input [(ngModel)]="row.stock"></ng-template>
+  <ng-template st-row="defaultFlag" let-row>
+    <nz-switch [nzDisabled]="!row.disFlag" (ngModelChange)="changeDefault($event,row)" nzSize="small" [(ngModel)]="row.defaultFlag"></nz-switch>
+  </ng-template>
+  <ng-template st-row="disFlag" let-row><nz-switch (ngModelChange)="changeDisFlag($event,row)" nzSize="small" [(ngModel)]="row.disFlag"></nz-switch></ng-template>
+</st>

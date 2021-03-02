@@ -1,0 +1,12 @@
+<image-cropper [imageChangedEvent]="_file" [maintainAspectRatio]="true" [aspectRatio]="_aspectRatio" format="png"
+  (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()" *ngIf="_aspectRatio" (imageCropped)="imageCropped($event)"></image-cropper>
+
+
+<div class="customize-footer">
+  <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="onSubmit()">
+    {{"app.action.submit" | translate}}
+  </button>
+  <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="onCancel()">
+    {{"app.action.cancel" | translate}}
+  </button>
+</div>

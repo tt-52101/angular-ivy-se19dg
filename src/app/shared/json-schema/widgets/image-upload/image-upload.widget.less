@@ -1,0 +1,40 @@
+@charset 'UTF-8';
+.image-upload {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center; //   @include flex(center, center);
+  //   @include size(140px, 80px);
+  width: 140px;
+  height: 80px;
+  cursor: pointer;
+  position: relative;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  i {
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    font-size: 28px;
+    color: #d9d9d9;
+  }
+  &:hover,
+  &:active {
+    i {
+      color: #12132e;
+    }
+    border: 1px solid #12132e;
+  }
+}
+
+.upload-input {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  z-index: 1;
+}

@@ -1,0 +1,27 @@
+<sf-item-wrap [id]="id" [schema]="schema" [ui]="ui" [showError]="showError" [error]="error" [showTitle]="schema.title">
+  <!-- 多图上传 -->
+  <!-- <div *ngIf="config.limit > 1;else single"> -->
+    <div nz-card>
+      <nz-upload nzAction="/v1/attachment/upload" (nzChange)="handleUploadChange($event)" [nzFileType]="config.fileType"  nzListType="picture-card" [(nzFileList)]="fileList"  [nzShowButton]="fileList.length < config.limit" [nzPreview]="handlePreview">
+        <i nz-icon nzType="plus"></i>
+        <div class="ant-upload-text">Upload</div>
+      </nz-upload>
+      <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible = false">
+        <ng-template #modalContent>
+          <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+        </ng-template>
+      </nz-modal>
+    </div>
+  <!-- </div> -->
+
+  <!-- 单图上传 -->
+  <!-- <ng-template #single>
+    <div class="image-upload">
+        <input type="file" class="upload-input" (change)="selected($event)">
+        <i nz-icon nzType="upload" nzTheme="outline"  *ngIf="!percent && !value"></i>
+        <img class="img-preview" [src]="value" *ngIf="value" width="100%">
+        <nz-progress [nzPercent]="percent" [nzStrokeWidth]="5" [nzStatus]="'active'" *ngIf="percent && !value"></nz-progress>
+    </div>
+  </ng-template> -->
+
+</sf-item-wrap>

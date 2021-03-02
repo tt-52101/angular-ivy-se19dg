@@ -1,0 +1,6 @@
+<nz-input-group [nzPrefix]="prefTpl">
+  <ng-template #prefTpl>
+    <label nz-checkbox [(ngModel)]="checkFlag" (ngModelChange)="emit()"></label>
+  </ng-template>
+  <input type="text" nz-input [(ngModel)]="name" (ngModelChange)="emit()">
+</nz-input-group>

@@ -1,0 +1,18 @@
+<sf-item-wrap [id]="id" [schema]="schema" [ui]="ui" [showError]="showError" [error]="error" [showTitle]="schema.title">
+
+
+  <button nz-button nzType="default" class="w-full" (click)="add($event)"><i nz-icon nzType="plus" nzTheme="outline"></i> {{ 'app.action.add' | translate}}</button>
+  
+      <div class="mt-sm" *ngFor="let i of list; let idx = index;" >
+        <nz-input-group [nzAddOnBefore]="ui.addOnBefore" [nzSuffixIcon]="ui.suffixIcon" [nzAddOnAfter]="suffixIconButton">
+          <input nz-input [attr.id]="ui.id" [disabled]="ui.disabled" [attr.disabled]="ui.disabled" [nzSize]="ui.size"  [(ngModel)]="i.value"  (keyup)="changeVal()"/>
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+          <div (click)="remove(idx)">
+            <i nz-icon nzType="delete"></i>
+          </div>
+        </ng-template>
+      </div>
+    
+
+</sf-item-wrap>

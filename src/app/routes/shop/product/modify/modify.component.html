@@ -1,0 +1,46 @@
+
+
+<nz-spin nzTip="Loading..."  [nzSpinning]="http.loading">
+  <nz-card>
+    <nz-tabset>
+      <nz-tab [nzTitle]="'app.product.base_info' | translate" >
+        <!-- 商品基本信息 -->
+        <sf [schema]="baseSchema" [formData]="record" #bashSf [button]="null" (formValueChange)="handleFormValueChange($event)"></sf>
+      </nz-tab>
+      <nz-tab [nzTitle]="'app.product.indroduce' | translate">
+        <!-- 商品简介 -->
+        <sf [schema]="introduceSchema" [formData]="record" #introSf [button]="null" ></sf>
+      </nz-tab>
+      <nz-tab [nzTitle]="'app.product.images' | translate">
+        <!-- 商品图片 -->
+        <sf [schema]="imagesSchema" [formData]="record" #imagesSf [button]="null"></sf>
+      </nz-tab>
+      <nz-tab [nzTitle]="'app.product.param' | translate" [nzDisabled]="!bashSf.value.categoryId">
+        <!-- 商品参数 -->
+        <div nz-row>
+          <div nz-col [nzXs]="{ span: 24, offset: 0 }" [nzLg]="{ span: 18, offset: 3 }">
+            <product-parameter [json]="record?record.parameters: []"  [categoryId]="bashSf.value.categoryId" (update)="handleProductParamChange($event)"></product-parameter>
+          </div>
+        </div>
+      </nz-tab>
+      <nz-tab [nzTitle]="'app.product.attr' | translate" [nzDisabled]="!bashSf.value.categoryId">
+        <!-- 商品属性 -->
+        <div nz-row>
+          <div nz-col [nzXs]="{ span: 24, offset: 0 }" [nzLg]="{ span: 18, offset: 3 }">
+            <nz-empty *ngIf="!bashSf.value.categoryId; else productAttribute" nzNotFoundContent="请先在基本信息中选择[商品类目]" class="my-lg"></nz-empty>
+            <ng-template #productAttribute>
+              <product-attribute [json]="record?record.attributes: []" [categoryId]="bashSf.value.categoryId" (update)="handleProductAttributesChange($event)"></product-attribute>
+            </ng-template>
+          </div>
+        </div>
+      </nz-tab>
+      <nz-tab [nzTitle]="'app.product.spec' | translate" [nzDisabled]="!bashSf.value.categoryId">
+        <sku-editor [(ngModel)]="sku" name="edit" (ngModelChange)="handleSkuChange($event)" (reset)="handleSkuReset($event)" [currency]="bashSf.value.currency"></sku-editor>
+      </nz-tab>
+    </nz-tabset>
+    <div class="d-flex justify-content-center mt-md">
+      <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="onSubmit()" [disabled]="(bashSf && !bashSf.valid) || ( introSf && !introSf.valid) || (imagesSf && !imagesSf.valid)" [nzLoading]="http.loading">{{'app.action.submit' | translate}}</button>
+      <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="onCancel()">{{'app.action.back' | translate}}</button>
+    </div>
+  </nz-card>
+</nz-spin>

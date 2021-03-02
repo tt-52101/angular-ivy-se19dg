@@ -1,0 +1,19 @@
+
+<div class="mb-lg">
+  
+  <ng-container *ngFor="let i of list; let idx = index">
+    <div class="mb-md">
+      <div nz-row  nzGutter="12" class="d-flex  align-items-center">
+        <div nz-col [nzSpan]="4"  class="text-right">
+          {{i.name}}
+        </div>
+        <div nz-col [nzSpan]="16">
+          <nz-select [(ngModel)]="i.selected" (ngModelChange)="notify()" style="width:100%">
+            <nz-option *ngFor="let option of i.values" [nzValue]="option.id" [nzLabel]="option.value"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  
+</div>
