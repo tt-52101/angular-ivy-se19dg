@@ -69,7 +69,7 @@ export class StartupService extends BaseApi {
               name: '骆驼油气商城',
             });
             // 设置页面标题的后缀
-            this.titleService.default = '骆驼油气商城';
+            this.titleService.default = 'T';
             this.titleService.suffix = '骆驼油气商城';
 
           },
